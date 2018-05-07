@@ -1,20 +1,6 @@
 {
   "nodes": [
     {
-      "id": "4792ca95",
-      "type": "objectStore",
-      "x": 285,
-      "y": 163,
-      "name": "Uploaded Images",
-      "publicPermissions": "none",
-      "websiteHosting": false,
-      "wires": [
-        [
-          "6f5614a3"
-        ]
-      ]
-    },
-    {
       "id": "8bd78ca0",
       "type": "objectStore",
       "x": 710,
