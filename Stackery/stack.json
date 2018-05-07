@@ -1,99 +1,48 @@
 {
   "nodes": [
     {
-      "id": "2eb546af",
-      "type": "function",
-      "name": "Hello!",
-      "outputs": 1,
-      "memorySize": 128,
-      "timeout": 30,
-      "runtime": "nodejs8",
-      "location": "inline",
-      "noerr": true,
-      "x": 400,
-      "y": 185,
+      "id": "4792ca95",
+      "type": "objectStore",
+      "x": 285,
+      "y": 163,
+      "name": "Uploaded Images",
+      "publicPermissions": "none",
+      "websiteHosting": false,
+      "wires": [
+        [
+          "6f5614a3"
+        ]
+      ]
+    },
+    {
+      "id": "8bd78ca0",
+      "type": "objectStore",
+      "x": 710,
+      "y": 163,
+      "name": "Processed Images",
+      "publicPermissions": "read",
+      "websiteHosting": false,
       "wires": [
         []
       ]
     },
     {
-      "id": "de88533a",
+      "id": "6f5614a3",
       "type": "function",
-      "name": "Echo",
+      "x": 495,
+      "y": 167,
+      "name": "imageProcessor",
       "outputs": 1,
       "memorySize": 128,
-      "timeout": 30,
-      "runtime": "nodejs8",
-      "location": "inline",
-      "noerr": true,
-      "x": 400,
-      "y": 285,
-      "wires": [
-        []
-      ]
-    },
-    {
-      "id": "1cbcd2be",
-      "type": "http",
-      "x": 197.5,
-      "y": 235,
-      "width": 185,
-      "height": 260
-    },
-    {
-      "id": "c62b4bc1",
-      "type": "restApiEndpoint",
-      "x": 185,
-      "y": 185,
-      "name": "",
-      "path": "/",
-      "method": "GET",
-      "wires": [
-        [
-          "2eb546af"
-        ]
-      ]
-    },
-    {
-      "id": "7ddbb3b7",
-      "type": "restApiEndpoint",
-      "x": 195,
-      "y": 285,
-      "name": "",
-      "path": "/{message}",
-      "method": "GET",
-      "wires": [
-        [
-          "de88533a"
-        ]
-      ]
-    },
-    {
-      "id": "6f3e7228",
-      "type": "errors",
-      "x": 200,
-      "y": 400,
-      "wires": [
-        [
-          "22562ac4"
-        ]
-      ]
-    },
-    {
-      "id": "22562ac4",
-      "type": "function",
-      "x": 410,
-      "y": 400,
-      "name": "LogErrors",
-      "outputs": 1,
-      "memorySize": 3008,
-      "timeout": 30,
-      "runtime": "nodejs8",
+      "timeout": 120,
+      "runtime": "nodejs",
       "location": "inline",
       "envVars": {},
       "entryPoint": "",
       "wires": [
-        []
+        [
+          "8bd78ca0"
+        ]
       ]
     }
   ]
