@@ -6,6 +6,7 @@ const s3 = new AWS.S3();
 
 module.exports = function handler(event, context, callback) {
   console.log(event);
+  const ports = JSON.parse(process.env.STACKERY_PORTS)
   console.log(ports[0][0].bucket)
     //
     // let record = event.Records[0];
