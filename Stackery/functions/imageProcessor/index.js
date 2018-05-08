@@ -8,7 +8,7 @@ module.exports = function handler(event, context, callback) {
   console.log(event);
   const ports = JSON.parse(process.env.STACKERY_PORTS)
   fs = require('fs')
-  fs.readFile('/hello.html', 'utf8', function(err, data) {
+  fs.readFile('./hello.html', 'utf8', function(err, data) {
     if (err) {
       return console.log(err);
     }
