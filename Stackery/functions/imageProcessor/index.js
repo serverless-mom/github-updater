@@ -1,22 +1,34 @@
 const AWS = require('aws-sdk');
-const gm = require('gm').subClass({
-  imageMagick: true
-});
+const fs = require('fs')
+const fileName = 'hello.html'
+
 const s3 = new AWS.S3();
 
 module.exports = function handler(event, context, callback) {
   console.log(event);
   const ports = JSON.parse(process.env.STACKERY_PORTS)
-  fs = require('fs')
-  fs.readFile('./hello.html', 'utf8', function(err, data) {
+  fs.readFile(`./${fileName}`, 'utf8', function(err, data) {
     if (err) {
       return console.log(err);
     }
+    let params = {
+      Body: data,
+      Key: `${fileName}`,
+      Bucket: ports[0][0].bucket
+    };
     console.log(data);
+    s3.putObject(params).then(
+        (response) => {
+          console.dir(response);
+          callback(null, {});
+        }
+      )
+      .catch((error) => {
+        callback(error);
+      });
   });
   // console.log(ports[0][0].bucket)
   // console.dir(ports[0])
-  callback(null, {});
   //
   // let record = event.Records[0];
   // if (record.eventName !== 'ObjectCreated:Put') {
