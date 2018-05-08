@@ -1,7 +1,7 @@
 {
   "Resources": {
-    "SeedDatabase": {
-      "Type": "Custom::SeedDatabase",
+    "lambda-on-deploy": {
+      "Type": "Custom::lambda-on-deploy",
       "Properties": {
         "ServiceToken": { "Fn::GetAtt": [ "6f5614a3", "Arn" ] }
       }
