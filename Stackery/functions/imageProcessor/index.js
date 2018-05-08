@@ -17,15 +17,16 @@ module.exports = function handler(event, context, callback) {
       Bucket: ports[0][0].bucket
     };
     console.log(data);
-    s3.putObject(params).then(
-        (response) => {
-          console.dir(response);
-          callback(null, {});
-        }
-      )
-      .catch((error) => {
-        callback(error);
-      });
+    s3.putObject(params, (err, data) => {
+      if (err) {
+        console.log(err);
+        callback(null, {});
+      } else {
+        console.dir(data);
+        callback(null, {});
+
+      }
+    })
   });
   // console.log(ports[0][0].bucket)
   // console.dir(ports[0])
